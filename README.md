@@ -11,48 +11,29 @@ Refactoring: Cleanly refactor your codebase by renaming object keys without manu
 To install this package, use npm:
 
 ```bash
-npm install your-package-name
+npm install json-key-rename
 ```
 
 
+### Installation
 
-Installation
+Here's how you can use this package to rename keys in JSON:
 
-Here's how you can use this package to rename keys in a nested object:
+```bash
+const renameJsonKeys = require('json-key-rename');
 
-const yourPackage = require('json-key-rename');
-
-
-const sampleData = {
+const jsonData = {
   firstName: 'Alice',
   lastName: 'Smith',
   address: {
     street: '123 Main St',
     city: 'Anytown',
     postalCode: '12345',
-  },
-  students: [
-    {
-      firstName: 'Bob',
-      lastName: 'Johnson',
-      grades: {
-        math: 'A',
-        physics: 'B',
-      },
-    },
-    {
-      firstName: 'Charlie',
-      lastName: 'Brown',
-      grades: {
-        math: 'C',
-        physics: 'A',
-      },
-    },
-  ],
+  }
 };
 
-// Define the key mapping for renaming
-const keyMap = {
+// Define the new key values for the keys to be renamed
+const newKeys = {
   firstName: 'givenName',
   lastName: 'surname',
   street: 'streetAddress',
@@ -60,10 +41,11 @@ const keyMap = {
   postalCode: 'zipcode',
 };
 
-// Use your package to rename keys
-const renamedData = yourPackage.renameKeys(sampleData, keyMap);
+const renamedData = renameJsonKeys(jsonData, newKeys);
 console.log(renamedData);
+```
 Output:
+```bash
 
 {
   givenName: 'Alice',
@@ -72,39 +54,24 @@ Output:
     streetAddress: '123 Main St',
     cityName: 'Anytown',
     zipcode: '12345',
-  },
-  students: [
-    {
-      givenName: 'Bob',
-      surname: 'Johnson',
-      grades: {
-        math: 'A',
-        physics: 'B',
-      },
-    },
-    {
-      givenName: 'Charlie',
-      surname: 'Brown',
-      grades: {
-        math: 'C',
-        physics: 'A',
-      },
-    },
-  ],
+  }
 }
+```
+## For Frameworks like Angular
 
-API
+```bash
+import {renameJsonKeys} from 'json-key-rename';
+```
 
-renameKeys(object, keyMapping)
+```bash
+const jsonData = { a: 1, b: 2 };
+const newKeys = { a: 'x', b: 'y' };
 
-Parameters:
-object (Object): The object whose keys will be renamed.
-keyMapping (Object): An object where keys are the old keys and values are the new keys.
-Returns: A new object with renamed keys.
+const renamedJson = renameJsonKeys(jsonData, newKeys);
 
-Example:
-const renamedObject = yourPackage.renameKeys(
-  { a: 1, b: 2 },
-  { a: 'x', b: 'y' }
-);
-console.log(renamedObject); // { x: 1, y: 2 }
+console.log('Renamed Object:', renamedJson);
+```
+
+
+
+
