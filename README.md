@@ -2,8 +2,10 @@
 
 json-key-rename is a lightweight utility that simplifies the process of renaming keys in JavaScript objects(JSON). Whether you're working with flat or deeply nested objects, this package allows you to easily transform keys based on a given mapping. It’s perfect for scenarios such as:
 
-Data normalization: Rename API response keys to match your application's expected format.\n
-Consistency: Ensure consistent naming conventions across different data sources.\n
+Data normalization: Rename API response keys to match your application's expected format.
+
+Consistency: Ensure consistent naming conventions across different data sources.
+
 Refactoring: Cleanly refactor your codebase by renaming object keys without manually editing every instance.
 
 ## Installation
