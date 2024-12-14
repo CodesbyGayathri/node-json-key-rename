@@ -3,17 +3,17 @@ export function renameJsonKeys<T>(obj: T, keyMap: Record<string, string>): strin
   const keyLookup = new Map(Object.entries(keyMap));
 
 
-  function renameObject(o: any): any {
+  function renameJson(o: any): any {
     if (Array.isArray(o)) {
       // If the value is an array, process each element
-      return o.map(item => (typeof item === 'object' && item !== null ? renameObject(item) : item));
+      return o.map(item => (typeof item === 'object' && item !== null ? renameJson(item) : item));
     }
 
     if (o && typeof o === 'object' && !Array.isArray(o)) {
       // If the value is an object, rename its keys
       return Object.entries(o).reduce((acc, [key, value]) => {
         const newKey = keyLookup.get(key) || key; 
-        acc[newKey] = renameObject(value);
+        acc[newKey] = renameJson(value);
         return acc;
       }, {} as any);
     }
@@ -21,5 +21,5 @@ export function renameJsonKeys<T>(obj: T, keyMap: Record<string, string>): strin
     return o; 
   }
 
-  return JSON.stringify(renameObject(obj));
+  return renameJson(obj);
 }

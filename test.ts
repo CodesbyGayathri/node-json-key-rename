@@ -69,5 +69,7 @@ const obj = [{
     "work": "officePhone",
     "math": "dummy"
   };
-  
+
+
+console.log(obj);
 console.log(renameJsonKeys(obj, keyMap));
