@@ -12,6 +12,8 @@ To install this package, use npm:
 
 ```bash
 npm install your-package-name
+```
+
 
 
 Installation
