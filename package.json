@@ -8,7 +8,13 @@
     "build": "tsc",
   "test": "node test.js"
   },
-  "keywords": [],
+  "keywords": ["json",
+    "rename",
+    "keys",
+    "utility",
+    "javascript",
+    "typescript",
+    "api"],
   "author": "",
   "license": "MIT",
    "repository": {
